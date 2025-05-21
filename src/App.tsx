@@ -1,4 +1,5 @@
 import { useAutoAnimate } from "@formkit/auto-animate/react";
+import posthog from 'posthog-js';
 import { useEffect, useRef, useState } from 'react';
 import './App.css';
 import LoadingIndicator from "./LoadingIndicator.tsx";
@@ -30,6 +31,8 @@ function App() {
         setErrMsg('');
         try {
 
+          posthog.capture('form_submit', formValues);
+
             // const result = await fetch('http://localhost:4321/api/form/post', {
             const result = await fetch('https://helen-doron-form-backend.emems.workers.dev/api/form/post', {
                 method: 'POST',
@@ -43,6 +46,9 @@ function App() {
             if (result.status !== 200) {
                 throw new Error(await result.text());
             }
+
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
             return undefined;
 
         } catch (e) {
