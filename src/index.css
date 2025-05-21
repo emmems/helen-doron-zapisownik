@@ -1,0 +1,15 @@
+@import "tailwindcss" prefix(hl);
+
+@theme {
+
+    --font-display: 'Signika', 'sans-serif';
+
+    --color-cerise-500: #E22A86;
+    --color-cerise-600: #BA1B6A;
+    --color-cerise-700: #881950;
+    --color-lime-450: #95C23C;
+    --color-form-input: #F3F3F3;
+    --color-headings-100: #2C2C2C;
+    --color-headings-200: #898989;
+    --color-headings-300: #656565;
+}
